@@ -23,3 +23,25 @@
 library(tidyverse)
 library(cols4all)
 library(hrbrthemes)
+
+# Carregar dados ---------------------------------------------------------------------------------------------------------------------------
+
+suic <- read.csv("suicide-death-rates.csv")
+view(suic)
+names(suic)
+
+# Manipular dados --------------------------------------------------------------------------------------------------------------------------
+
+suic <- suic %>%
+  select(-Code) %>%
+  rename(taxa_suicidio = Deaths...Self.harm...Sex..Both...Age..Age.standardized..Rate.) %>%
+  view()
+
+suic1 <- suic %>%
+  filter(Entity %in% c("United States", "Germany", "Japan",
+                       "Cuba", "China", "North Korea")) %>%
+  group_by(Entity) %>%
+  summarise(media = mean(taxa_suicidio),
+            sd = sd(taxa_suicidio), n = n(),
+            se = sd/sqrt(n)) %>%
+  view()
