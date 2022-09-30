@@ -1,0 +1,1 @@
+# suicidio_comunismo_capitalismo
