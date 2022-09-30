@@ -64,7 +64,7 @@ ggplot(suic1, aes(x = fct_reorder(Entity, media),
                                "#DDCC77", "#117733",
                                "#332288", "#AA4499")) +
   scale_y_continuous(expand = expansion(mult = c(0,0))) +
-  labs(x = "Países", y = "Porcentagem de suicídio 1990-2019") +
+  labs(x = "Países", y = "Porcentagem de suicídio") +
   theme_ipsum(axis_title_size = 16,
               axis_text_size = 14) +
   theme(legend.position = "none", 
