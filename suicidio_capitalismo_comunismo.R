@@ -63,6 +63,8 @@ ggplot(suic1, aes(x = fct_reorder(Entity, media),
   scale_fill_manual(values = c("#88CCEE", "#CC6677",
                                "#DDCC77", "#117733",
                                "#332288", "#AA4499")) +
+  scale_x_discrete(labels = c("Alemanha", "Estados Unidos", "Coreia do Norte",
+                               "China", "Cuba", "Japão")) +
   scale_y_continuous(expand = expansion(mult = c(0,0))) +
   labs(x = "Países", y = "Porcentagem de suicídio") +
   theme_ipsum(axis_title_size = 16,
@@ -76,7 +78,9 @@ ggplot(suic2, aes(x = Year, y = taxa_suicidio,
   geom_line(size = 1.2) +
   scale_color_manual(values = c("#88CCEE", "#CC6677",
                                "#DDCC77", "#117733",
-                               "#332288", "#AA4499")) +
+                               "#332288", "#AA4499"),
+                     labels = c("China", "Cuba", "Alemanha",
+                                "Japão", "Coreia do Norte", "Estados Unidos")) +
   labs(x = "Tempo (anos)", y = "Porcentagem de suicídio",
        color = "Países") +
   theme_ipsum(axis_title_size = 16,
