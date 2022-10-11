@@ -23,6 +23,7 @@
 library(tidyverse)
 library(cols4all)
 library(hrbrthemes)
+library(ggthemes)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
@@ -51,6 +52,10 @@ suic2 <- suic %>%
                        "Cuba", "China", "North Korea")) %>%
   view()
 
+suic3 <- suic %>%
+  filter(Entity %in% c("United States", "China")) %>%
+  view()
+
 # Gráficos ---------------------------------------------------------------------------------------------------------------------------------
 
 c4a("safe", 6)
@@ -66,7 +71,7 @@ ggplot(suic1, aes(x = fct_reorder(Entity, media),
   scale_x_discrete(labels = c("Alemanha", "Estados Unidos", "Coreia do Norte",
                                "China", "Cuba", "Japão")) +
   scale_y_continuous(expand = expansion(mult = c(0,0))) +
-  labs(x = "Países", y = "Porcentagem de suicídio") +
+  labs(x = "Países", y = "Suicídio (%)") +
   theme_ipsum(axis_title_size = 16,
               axis_text_size = 14) +
   theme(legend.position = "none", 
@@ -81,8 +86,21 @@ ggplot(suic2, aes(x = Year, y = taxa_suicidio,
                                "#332288", "#AA4499"),
                      labels = c("China", "Cuba", "Alemanha",
                                 "Japão", "Coreia do Norte", "Estados Unidos")) +
-  labs(x = "Tempo (anos)", y = "Porcentagem de suicídio",
+  labs(x = "Tempo (anos)", y = "Suicídio (%)",
        color = "Países") +
   theme_ipsum(axis_title_size = 16,
               axis_text_size = 14) +
   theme(axis.text = element_text(colour = "black"))
+
+c4a("dark2", 2)
+
+ggplot(suic3, aes(x = Year, y = taxa_suicidio, 
+                  group = Entity, col = Entity)) +
+  geom_line(size = 2.2) +
+  scale_color_manual(values = c("#1B9E77", "#D95F02")) +
+  labs(x = "Tempo (anos)", y = "Suicídio (%)", 
+       color = "Países") +
+  theme_hc() +
+  theme(axis.title = element_text(size = 18),
+        axis.text = element_text(color = "black", size = 15),
+        legend.text = element_text(size = 12))
