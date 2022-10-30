@@ -1,4 +1,4 @@
-# Suicídio em países capitalistas e comunistas
+# Suicídio em países democratas e autocratas
 
 ### Autoria do script: Jeanne Franco
 ### Data: 30/09/22
